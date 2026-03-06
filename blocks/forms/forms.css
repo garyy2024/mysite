@@ -1,0 +1,66 @@
+.forms-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 600px;
+}
+
+.forms-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.forms-label {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-color, #333);
+  line-height: 1.4;
+}
+
+.forms-label-required::after {
+  content: ' *';
+  color: var(--error-color, #d32f2f);
+}
+
+.forms-input {
+  padding: 12px 16px;
+  border: 1px solid var(--border-color, #dadada);
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: inherit;
+  background-color: var(--background-color, #fff);
+  color: var(--text-color, #333);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.forms-input:focus {
+  outline: none;
+  border-color: var(--link-color, #06c);
+  box-shadow: 0 0 0 3px rgb(0 102 204 / 10%);
+}
+
+.forms-input:invalid:not(:placeholder-shown) {
+  border-color: var(--error-color, #d32f2f);
+}
+
+.forms-input::placeholder {
+  color: var(--text-color-secondary, #999);
+}
+
+/* Responsive adjustments */
+@media (width >= 600px) {
+  .forms-form {
+    gap: 32px;
+  }
+
+  .forms-field {
+    gap: 10px;
+  }
+
+  .forms-label {
+    font-size: 15px;
+  }
+}

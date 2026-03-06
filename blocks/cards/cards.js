@@ -10,6 +10,16 @@ export default function decorate(block) {
       if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
       else div.className = 'cards-card-body';
     });
+    
+    // Wrap consecutive images in a container for flex layout
+    const images = [...li.querySelectorAll('.cards-card-image')];
+    if (images.length > 1) {
+      const imageWrapper = document.createElement('div');
+      imageWrapper.className = 'cards-card-images';
+      images.forEach((img) => imageWrapper.appendChild(img));
+      li.insertBefore(imageWrapper, images[0]);
+    }
+    
     ul.append(li);
   });
   ul.querySelectorAll('picture > img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
